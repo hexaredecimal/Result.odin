@@ -2,6 +2,7 @@
 
 ### Why
 >> To avoid the nil check by any means necessary
+
 >> For fun 
 
 
