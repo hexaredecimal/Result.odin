@@ -41,6 +41,32 @@ unwrap :: proc(rs: Result($T, $E)) -> T {
 	return result
 }
 
+unwrap_or :: proc(rs: Result($T, $E), value: T) -> T {
+	result: T // Weird stuff?
+	switch v in rs {
+	case Err(E):
+		return value
+	case Ok(T):
+		ok := rs.(Ok(T))
+		// result := ok.value -> result is always 0 for some reason
+		return ok.value
+	}
+	return result
+}
+
+unwrap_orelse :: proc(rs: Result($T, $E), func: proc(rs: Result(T, E)) -> T) -> T {
+	result: T // Weird stuff?
+	switch v in rs {
+	case Err(E):
+		return func(rs)
+	case Ok(T):
+		ok := rs.(Ok(T))
+		// result := ok.value -> result is always 0 for some reason
+		return ok.value
+	}
+	return result
+}
+
 
 unwrap_err :: proc(rs: Result($T, $E)) -> E {
 	err: string
