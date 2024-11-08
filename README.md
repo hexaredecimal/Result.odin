@@ -2,6 +2,8 @@
 
 ### Why
 >> To avoid the nil check by any means necessary
+>> For fun 
+
 
 ## Example
 ```odin
@@ -12,6 +14,6 @@ safe_div :: proc(x: i32, y: i32) -> rs.Result(i32, string) {
 	return rs.Ok(i32){x / y}
 }
 ```
-```
-```
+
+
 
